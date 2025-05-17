@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Sistema de Venda de Carros</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <h1>Dashboard de Vendas</h1>
+    <div class="dashboard-grid">
+        <div class="dashboard-card" id="totalSales">
+            <h2>Total de Vendas</h2>
+            <div class="dashboard-value" id="salesCount">0</div>
+        </div>
+        <div class="dashboard-card" id="totalRevenue">
+            <h2>Receita Total</h2>
+            <div class="dashboard-value" id="revenueValue">R$ 0,00</div>
+        </div>
+        <div class="dashboard-card" id="carsInStock">
+            <h2>Carros em Estoque</h2>
+            <div class="dashboard-value" id="stockCount">0</div>
+        </div>
+        <div class="dashboard-card" id="topCar">
+            <h2>Carro Mais Vendido</h2>
+            <div class="dashboard-value" id="topCarValue">-</div>
+        </div>
+    </div>
+    <div class="dashboard-actions">
+        <a class="dashboard-btn" href="cars.html">Gerenciar Carros</a>
+        <a class="dashboard-btn" href="customers.html">Gerenciar Clientes</a>
+        <a class="dashboard-btn" href="employees.html">Gerenciar Funcionários</a>
+        <a class="dashboard-btn" href="services.html">Gerenciar Serviços</a>
+        <a class="dashboard-btn" href="sales.html">Gerenciar Vendas</a>
+    </div>
+    <div class="dashboard-section">
+        <h2>Últimas Vendas</h2>
+        <table id="recentSalesTable">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Carro</th>
+                    <th>Cliente</th>
+                    <th>Preço</th>
+                    <th>Data</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
+<script>
+// Demo data for dashboard
+const sales = [
+    {id: 'S1', car: 'Fiat Uno', customer: 'João', price: 25000, date: '2025-05-10'},
+    {id: 'S2', car: 'VW Gol', customer: 'Maria', price: 32000, date: '2025-05-12'},
+    {id: 'S3', car: 'Fiat Uno', customer: 'Carlos', price: 25500, date: '2025-05-14'},
+];
+const cars = [
+    {id: 'C1', make: 'Fiat', model: 'Uno', year: 2020, price: 25000},
+    {id: 'C2', make: 'VW', model: 'Gol', year: 2021, price: 32000},
+];
+function updateDashboard() {
+    document.getElementById('salesCount').textContent = sales.length;
+    document.getElementById('revenueValue').textContent = 'R$ ' + sales.reduce((a, s) => a + s.price, 0).toLocaleString('pt-BR');
+    document.getElementById('stockCount').textContent = cars.length;
+    // Find top car
+    const carCount = {};
+    sales.forEach(s => { carCount[s.car] = (carCount[s.car]||0)+1; });
+    let topCar = '-'; let max = 0;
+    for (const c in carCount) if (carCount[c] > max) { topCar = c; max = carCount[c]; }
+    document.getElementById('topCarValue').textContent = topCar;
+    // Recent sales
+    const tbody = document.querySelector('#recentSalesTable tbody');
+    tbody.innerHTML = '';
+    sales.slice(-5).reverse().forEach(sale => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td>${sale.id}</td><td>${sale.car}</td><td>${sale.customer}</td><td>R$ ${sale.price.toLocaleString('pt-BR')}</td><td>${sale.date}</td>`;
+        tbody.appendChild(tr);
+    });
+}
+updateDashboard();
+</script>
+</body>
+</html>

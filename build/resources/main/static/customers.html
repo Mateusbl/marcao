@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciar Clientes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <h1>Gerenciar Clientes</h1>
+    <a href="index.html">← Voltar ao Dashboard</a>
+    <div class="form-section">
+        <h2>Adicionar Cliente</h2>
+        <form id="customerForm" class="flex-row">
+            <input type="text" id="customerName" placeholder="Nome" required>
+            <input type="email" id="customerEmail" placeholder="Email" required>
+            <button type="submit">Adicionar</button>
+        </form>
+    </div>
+    <h2>Clientes</h2>
+    <table id="customersTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+<script>
+let customers = [];
+function renderCustomers() {
+    const tbody = document.querySelector('#customersTable tbody');
+    tbody.innerHTML = '';
+    customers.forEach(customer => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+            <td>${customer.id}</td>
+            <td>${customer.name}</td>
+            <td>${customer.email}</td>
+            <td><button onclick="deleteCustomer('${customer.id}')">Remover</button></td>
+        `;
+        tbody.appendChild(tr);
+    });
+}
+document.getElementById('customerForm').onsubmit = function(e) {
+    e.preventDefault();
+    const name = document.getElementById('customerName').value;
+    const email = document.getElementById('customerEmail').value;
+    customers.push({ id: Math.random().toString(36).substring(2, 10), name, email });
+    this.reset();
+    renderCustomers();
+};
+function deleteCustomer(id) {
+    customers = customers.filter(c => c.id !== id);
+    renderCustomers();
+}
+renderCustomers();
+</script>
+</body>
+</html>

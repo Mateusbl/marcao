@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciar Carros</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <h1>Gerenciar Carros</h1>
+    <a href="index.html">← Voltar ao Dashboard</a>
+    <div class="form-section">
+        <h2>Adicionar Carro</h2>
+        <form id="carForm" class="flex-row">
+            <input type="text" id="make" placeholder="Marca" required>
+            <input type="text" id="model" placeholder="Modelo" required>
+            <input type="number" id="year" placeholder="Ano" required>
+            <input type="number" id="price" placeholder="Preço" required>
+            <button type="submit">Adicionar</button>
+        </form>
+    </div>
+    <h2>Estoque de Carros</h2>
+    <table id="carsTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Ano</th>
+                <th>Preço</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+<script>
+async function fetchCars() {
+    const res = await fetch('/api/cars');
+    const cars = await res.json();
+    const tbody = document.querySelector('#carsTable tbody');
+    tbody.innerHTML = '';
+    cars.forEach(car => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+            <td>${car.id}</td>
+            <td>${car.make}</td>
+            <td>${car.model}</td>
+            <td>${car.year}</td>
+            <td>${car.price}</td>
+            <td><button onclick="deleteCar('${car.id}')">Remover</button></td>
+        `;
+        tbody.appendChild(tr);
+    });
+}
+async function deleteCar(id) {
+    await fetch(`/api/cars/${id}`, { method: 'DELETE' });
+    fetchCars();
+}
+document.getElementById('carForm').onsubmit = async function(e) {
+    e.preventDefault();
+    const make = document.getElementById('make').value;
+    const model = document.getElementById('model').value;
+    const year = document.getElementById('year').value;
+    const price = document.getElementById('price').value;
+    await fetch('/api/cars', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            id: Math.random().toString(36).substring(2, 10),
+            make, model, year, price
+        })
+    });
+    this.reset();
+    fetchCars();
+};
+fetchCars();
+</script>
+</body>
+</html>

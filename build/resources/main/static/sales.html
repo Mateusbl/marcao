@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciar Vendas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="container">
+    <h1>Gerenciar Vendas</h1>
+    <a href="index.html">← Voltar ao Dashboard</a>
+    <div class="form-section">
+        <h2>Registrar Venda</h2>
+        <form id="saleForm" class="flex-row">
+            <input type="text" id="saleCar" placeholder="Carro (ID ou Nome)" required>
+            <input type="text" id="saleCustomer" placeholder="Cliente" required>
+            <input type="number" id="salePrice" placeholder="Preço" required>
+            <input type="date" id="saleDate" required>
+            <button type="submit">Registrar</button>
+        </form>
+    </div>
+    <h2>Vendas</h2>
+    <table id="salesTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Carro</th>
+                <th>Cliente</th>
+                <th>Preço</th>
+                <th>Data</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+<script>
+let sales = [
+    {id: 'S1', car: 'Fiat Uno', customer: 'João', price: 25000, date: '2025-05-10'},
+    {id: 'S2', car: 'VW Gol', customer: 'Maria', price: 32000, date: '2025-05-12'},
+];
+function renderSales() {
+    const tbody = document.querySelector('#salesTable tbody');
+    tbody.innerHTML = '';
+    sales.forEach(sale => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+            <td>${sale.id}</td>
+            <td>${sale.car}</td>
+            <td>${sale.customer}</td>
+            <td>R$ ${sale.price.toLocaleString('pt-BR')}</td>
+            <td>${sale.date}</td>
+            <td><button onclick="deleteSale('${sale.id}')">Remover</button></td>
+        `;
+        tbody.appendChild(tr);
+    });
+}
+document.getElementById('saleForm').onsubmit = function(e) {
+    e.preventDefault();
+    const car = document.getElementById('saleCar').value;
+    const customer = document.getElementById('saleCustomer').value;
+    const price = document.getElementById('salePrice').value;
+    const date = document.getElementById('saleDate').value;
+    sales.push({ id: Math.random().toString(36).substring(2, 10), car, customer, price: Number(price), date });
+    this.reset();
+    renderSales();
+};
+function deleteSale(id) {
+    sales = sales.filter(s => s.id !== id);
+    renderSales();
+}
+renderSales();
+</script>
+</body>
+</html>
