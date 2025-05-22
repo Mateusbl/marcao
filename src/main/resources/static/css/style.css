@@ -1,42 +1,49 @@
 body {
   font-family: "Segoe UI", Arial, sans-serif;
-  background: #f8f9fa;
+  background: #ffffff;
   margin: 0;
   padding: 0;
 }
+
 .container {
   max-width: 900px;
   margin: 2em auto;
-  background: #fff;
+  background: #f8f9fa;
   border-radius: 10px;
-  box-shadow: 0 2px 8px #0001;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   padding: 2em;
 }
+
 h1 {
   color: #2c3e50;
   text-align: center;
   margin-bottom: 1.5em;
 }
+
 h2 {
   color: #34495e;
   margin-top: 2em;
 }
+
 table {
   border-collapse: collapse;
   width: 100%;
   margin-bottom: 2em;
   background: #fafbfc;
 }
+
 th,
 td {
   border: 1px solid #e1e4e8;
   padding: 10px;
   text-align: left;
 }
+
 th {
   background: #eaf1fb;
   color: #2c3e50;
 }
+
 input,
 button,
 select {
@@ -45,10 +52,12 @@ select {
   border-radius: 4px;
   border: 1px solid #ccc;
 }
+
 input:focus,
 select:focus {
   outline: 2px solid #007bff33;
 }
+
 button {
   background: #007bff;
   color: #fff;
@@ -56,31 +65,82 @@ button {
   cursor: pointer;
   transition: background 0.2s;
 }
+
 button:hover {
   background: #0056b3;
 }
+
 .form-section {
   margin-bottom: 2em;
   background: #f4f8fb;
   padding: 1em;
   border-radius: 6px;
 }
+
 label {
   margin-right: 8px;
 }
+
 .section {
   margin-bottom: 2em;
 }
+
 .flex-row {
   display: flex;
   gap: 1em;
   flex-wrap: wrap;
 }
+
 @media (max-width: 600px) {
   .container {
     padding: 0.5em;
   }
   .flex-row {
     flex-direction: column;
+  }
+}
+
+/* ...existing code... */
+
+/* --- NAVBAR --- */
+.navbar {
+  background: #007bff;
+  padding: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.navbar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+.navbar li {
+  margin: 0;
+}
+.navbar a {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  padding: 1em 1.5em;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s;
+}
+.navbar a:hover,
+.navbar a:focus {
+  background: #0056b3;
+  color: #fff;
+}
+@media (max-width: 700px) {
+  .navbar ul {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .navbar a {
+    padding: 1em;
+    text-align: center;
   }
 }
