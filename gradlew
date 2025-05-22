@@ -1,4 +1,4 @@
-#!/bin/sh
+set JAVA_HOME=E:\Java\Java21#!/bin/sh
 
 #
 # Copyright © 2015-2021 the original authors.
