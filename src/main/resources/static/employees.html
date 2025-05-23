@@ -1,65 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gerenciar Funcionários</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-<div class="container">
-    <h1>Gerenciar Funcionários</h1>
-    <a href="index.html">← Voltar ao Dashboard</a>
-    <div class="form-section">
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/dark-theme.css" />
+  </head>
+  <body>
+    <div id="hud"></div>
+    <div class="container">
+      <h1>Gerenciar Funcionários</h1>
+      <div class="form-section">
         <h2>Adicionar Funcionário</h2>
         <form id="employeeForm" class="flex-row">
-            <input type="text" id="employeeName" placeholder="Nome" required>
-            <input type="text" id="employeePosition" placeholder="Cargo" required>
-            <button type="submit">Adicionar</button>
+          <input type="text" id="employeeName" placeholder="Nome" required />
+          <input
+            type="text"
+            id="employeePosition"
+            placeholder="Cargo"
+            required
+          />
+          <button type="submit">Adicionar</button>
         </form>
-    </div>
-    <h2>Funcionários</h2>
-    <table id="employeesTable">
+      </div>
+      <h2>Funcionários</h2>
+      <table id="employeesTable">
         <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nome</th>
-                <th>Cargo</th>
-                <th>Ações</th>
-            </tr>
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Cargo</th>
+            <th>Ações</th>
+          </tr>
         </thead>
         <tbody></tbody>
-    </table>
-</div>
-<script>
-let employees = [];
-function renderEmployees() {
-    const tbody = document.querySelector('#employeesTable tbody');
-    tbody.innerHTML = '';
-    employees.forEach(employee => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-            <td>${employee.id}</td>
-            <td>${employee.name}</td>
-            <td>${employee.position}</td>
-            <td><button onclick="deleteEmployee('${employee.id}')">Remover</button></td>
-        `;
-        tbody.appendChild(tr);
-    });
-}
-document.getElementById('employeeForm').onsubmit = function(e) {
-    e.preventDefault();
-    const name = document.getElementById('employeeName').value;
-    const position = document.getElementById('employeePosition').value;
-    employees.push({ id: Math.random().toString(36).substring(2, 10), name, position });
-    this.reset();
-    renderEmployees();
-};
-function deleteEmployee(id) {
-    employees = employees.filter(emp => emp.id !== id);
-    renderEmployees();
-}
-renderEmployees();
-</script>
-</body>
+      </table>
+    </div>
+    <script src="js/hud.js"></script>
+    <script src="js/employees.js"></script>
+  </body>
 </html>

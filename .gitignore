@@ -1,0 +1,187 @@
+# ========================================
+# SISTEMA E GERAL
+# ========================================
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+Desktop.ini
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+*.old
+*.orig
+*.rej
+*.sublime-workspace
+*.sublime-project
+*.vscode/
+*.code-workspace
+
+# ========================================
+# JAVA / COMPILAÇÃO
+# ========================================
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+*.zip
+*.tar.gz
+*.rar
+
+# Diretórios comuns de build
+/bin/
+/build/
+/target/
+
+# ========================================
+# GRADLE
+# ========================================
+*.gradle/
+*.gradle
+.gradle/
+/build/
+!gradle/wrapper/gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.properties
+gradle-app.setting
+gradlew
+gradlew.bat
+
+# Cache local do Gradle (opcional, se quiser limpar totalmente local builds)
+**/gradle-cache/
+
+# Logs e relatórios do Gradle
+build/reports/
+build/test-results/
+build/tmp/
+
+# Wrapper logs
+gradle/wrapper/gradle-wrapper.properties.lock
+
+# ========================================
+# MAVEN (caso o projeto use junto ou tenha vestígios)
+.mvn/
+target/
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+# ========================================
+# IDEs
+# IntelliJ IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# Eclipse
+.project
+.classpath
+.settings/
+.apt_generated/
+.factorypath/
+
+# NetBeans
+nbproject/private/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+# VS Code
+.vscode/
+
+# ========================================
+# TESTES E COBERTURA
+# Relatórios e arquivos temporários de testes
+/test-output/
+/test-results/
+/coverage/
+/jacoco.exec
+*.ec
+*.em
+*.coverage
+*.lcov
+
+# Cobertura do JaCoCo
+jacoco-report.html
+jacoco.csv
+jacoco.xml
+
+# Cobertura do Cobertura
+cobertura.ser
+cobertura/
+
+# Cobertura do Istanbul
+coverage/
+
+# ========================================
+# SPRING BOOT / CONFIG
+# Arquivos sensíveis ou específicos de ambiente
+*.env
+.env*
+application-dev.yml
+application-dev.properties
+application-test.yml
+application-test.properties
+application-prod.yml
+application-prod.properties
+
+# ========================================
+# LOMBOK
+*.lombok.log
+
+# ========================================
+# LOGS
+*.log
+*.log.*
+
+# ========================================
+# DOCKER / CONTAINERS (caso use)
+Dockerfile
+docker-compose*.yml
+*.pid
+*.seed
+
+# ========================================
+# OUTROS
+# Arquivos de lock ou cache de ferramentas
+*.lock
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Arquivos de banco local
+*.db
+*.sqlite
+*.mv.db
+*.h2.db
+
+# Configurações locais
+local.properties
+*.local
+*.secret
+*.key
+*.pem
+*.crt
+*.csr
+*.der
+
+# Backup de arquivos de configuração
+*.cfg.bak
+*.conf.bak
+
+# ========================================
+# PERSONALIZADO
+# Adicione aqui quaisquer arquivos ou pastas específicas do seu projeto
+# /secrets/
+# /temp/
