@@ -1,4 +1,4 @@
-@rem
+;@rem
 @rem Copyright 2015 the original author or authors.
 @rem
 @rem Licensed under the Apache License, Version 2.0 (the "License");
@@ -43,7 +43,23 @@ if "%DIRNAME%"=="" set DIRNAME=.
 set APP_BASE_NAME=%~n0
 set APP_HOME=%DIRNAME%
 
-set JAVA_HOME=E:\Java\Java21
+@rem Try to automatically find JAVA_HOME if not set
+if not defined JAVA_HOME (
+  for %%i in (
+    "C:\Program Files\Java\jdk*"
+    "C:\Program Files\AdoptOpenJDK\jdk*"
+    "C:\Program Files\Eclipse Foundation\jdk*"
+    "C:\Program Files\Zulu\zulu*"
+    "C:\Program Files\Amazon Corretto\jdk*"
+    "C:\Program Files (x86)\Java\jdk*"
+  ) do (
+    if exist "%%~fi\bin\java.exe" (
+      set "JAVA_HOME=%%~fi"
+      goto foundJava
+    )
+  )
+)
+:foundJava
 
 for %%i in ("%APP_HOME%") do set APP_HOME=%%~fi
 if defined JAVA_HOME goto findJavaFromJavaHome
