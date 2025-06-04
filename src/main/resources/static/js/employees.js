@@ -33,7 +33,6 @@ document.getElementById('employeeForm').onsubmit = async function(e) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-            idFuncionario: Math.floor(Math.random() * 1000),
             cpf,
             nome,
             endereco,

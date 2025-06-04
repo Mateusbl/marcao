@@ -34,7 +34,6 @@ document.getElementById('carForm').onsubmit = async function(e) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-            idCarro: Math.floor(Math.random() * 1000),
             placa,
             marca,
             modelo,

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="MainTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2025-06-04T17:18:13" hostname="MATESPC" time="0.025">
+<testsuite name="MainTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2025-06-04T18:07:07" hostname="MATESPC" time="0.024">
   <properties/>
-  <testcase name="testMain()" classname="MainTest" time="0.015"/>
-  <testcase name="testCalculateComplexDiscount()" classname="MainTest" time="0.001"/>
+  <testcase name="testMain()" classname="MainTest" time="0.014"/>
+  <testcase name="testCalculateComplexDiscount()" classname="MainTest" time="0.003"/>
   <testcase name="testCalculateSpecialDiscountBoundaryValues()" classname="MainTest" time="0.002"/>
   <testcase name="testCalculateSpecialDiscount()" classname="MainTest" time="0.001"/>
-  <testcase name="testCalculateComplexDiscountBoundaryValues()" classname="MainTest" time="0.001"/>
+  <testcase name="testCalculateComplexDiscountBoundaryValues()" classname="MainTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

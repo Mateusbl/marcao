@@ -12,29 +12,18 @@
     <div class="container">
       <h1>Gerenciar Vendas</h1>
       <div class="form-section">
-        <h2>Registrar Venda</h2>
-        <form id="saleForm" class="flex-row">
-          <input
-            type="text"
-            id="saleCar"
-            placeholder="Carro (ID ou Nome)"
-            required
-          />
-          <input type="text" id="saleCustomer" placeholder="Cliente" required />
-          <input type="number" id="salePrice" placeholder="Preço" required />
-          <input type="date" id="saleDate" required />
+        <h2>Registrar Venda</h2>        <form id="saleForm" class="flex-row">
+          <input type="text" id="saleAddress" placeholder="Endereço de Entrega" required />
           <button type="submit">Registrar</button>
         </form>
       </div>
       <h2>Vendas</h2>
       <table id="salesTable">
         <thead>
-          <tr>
-            <th>ID</th>
-            <th>Carro</th>
-            <th>Cliente</th>
-            <th>Preço</th>
-            <th>Data</th>
+          <tr>            <th>ID Venda</th>
+            <th>Data Venda</th>
+            <th>Endereço Entrega</th>
+            <th>Valor Total</th>
             <th>Ações</th>
           </tr>
         </thead>

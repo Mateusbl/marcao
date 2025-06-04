@@ -30,7 +30,6 @@ document.getElementById('serviceForm').onsubmit = async function(e) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-            idServico: Math.floor(Math.random() * 1000),
             nomeServico,
             descricao,
             custoBase: parseFloat(custoBase)
