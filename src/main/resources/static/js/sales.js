@@ -3,16 +3,14 @@ async function fetchSales() {
     const res = await fetch('/api/sales');
     const sales = await res.json();
     const tbody = document.querySelector('#salesTable tbody');
-    tbody.innerHTML = '';
-    sales.forEach(sale => {
+    tbody.innerHTML = '';    sales.forEach(sale => {
         const tr = document.createElement('tr');
         tr.innerHTML = `
-            <td>${sale.id}</td>
-            <td>${sale.car}</td>
-            <td>${sale.customer}</td>
-            <td>R$ ${sale.price.toLocaleString('pt-BR')}</td>
-            <td>${sale.date}</td>
-            <td><button onclick="deleteSale('${sale.id}')">Remover</button></td>
+            <td>${sale.idVenda}</td>
+            <td>${sale.dataVenda}</td>
+            <td>${sale.enderecoEntrega}</td>
+            <td>R$ ${sale.valorTotal ? sale.valorTotal.toLocaleString('pt-BR') : '0,00'}</td>
+            <td><button onclick="deleteSale('${sale.idVenda}')">Remover</button></td>
         `;
         tbody.appendChild(tr);
     });
@@ -25,16 +23,16 @@ async function deleteSale(id) {
 
 document.getElementById('saleForm').onsubmit = async function(e) {
     e.preventDefault();
-    const car = document.getElementById('saleCar').value;
-    const customer = document.getElementById('saleCustomer').value;
-    const price = document.getElementById('salePrice').value;
-    const date = document.getElementById('saleDate').value;
+    const enderecoEntrega = document.getElementById('saleAddress').value;
     await fetch('/api/sales', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-            id: Math.random().toString(36).substring(2, 10),
-            car, customer, price: Number(price), date
+            idVenda: Math.floor(Math.random() * 1000),
+            dataVenda: new Date().toISOString(),
+            enderecoEntrega,
+            itens: [],
+            pagamento: null
         })
     });
     this.reset();

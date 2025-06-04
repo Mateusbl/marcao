@@ -3,16 +3,15 @@ async function fetchCars() {
     const res = await fetch('/api/cars');
     const cars = await res.json();
     const tbody = document.querySelector('#carsTable tbody');
-    tbody.innerHTML = '';
-    cars.forEach(car => {
+    tbody.innerHTML = '';    cars.forEach(car => {
         const tr = document.createElement('tr');
         tr.innerHTML = `
-            <td>${car.id}</td>
-            <td>${car.make}</td>
-            <td>${car.model}</td>
-            <td>${car.year}</td>
-            <td>${car.price}</td>
-            <td><button onclick="deleteCar('${car.id}')">Remover</button></td>
+            <td>${car.idCarro}</td>
+            <td>${car.marca}</td>
+            <td>${car.modelo}</td>
+            <td>${car.ano}</td>
+            <td>${car.precoVenda}</td>
+            <td><button onclick="deleteCar('${car.idCarro}')">Remover</button></td>
         `;
         tbody.appendChild(tr);
     });
@@ -25,16 +24,24 @@ async function deleteCar(id) {
 
 document.getElementById('carForm').onsubmit = async function(e) {
     e.preventDefault();
-    const make = document.getElementById('make').value;
-    const model = document.getElementById('model').value;
-    const year = document.getElementById('year').value;
-    const price = document.getElementById('price').value;
+    const placa = document.getElementById('placa').value;
+    const marca = document.getElementById('make').value;
+    const modelo = document.getElementById('model').value;
+    const ano = document.getElementById('year').value;
+    const cor = document.getElementById('cor').value;
+    const precoVenda = document.getElementById('price').value;
     await fetch('/api/cars', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-            id: Math.random().toString(36).substring(2, 10),
-            make, model, year, price
+            idCarro: Math.floor(Math.random() * 1000),
+            placa,
+            marca,
+            modelo,
+            ano: parseInt(ano),
+            cor,
+            precoVenda: parseFloat(precoVenda),
+            status: 'disponivel'
         })
     });
     this.reset();

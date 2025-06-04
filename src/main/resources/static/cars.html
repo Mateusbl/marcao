@@ -12,12 +12,13 @@
     <div class="container">
       <h1>Gerenciar Carros</h1>
       <div class="form-section">
-        <h2>Adicionar Carro</h2>
-        <form id="carForm" class="flex-row">
+        <h2>Adicionar Carro</h2>        <form id="carForm" class="flex-row">
+          <input type="text" id="placa" placeholder="Placa" required />
           <input type="text" id="make" placeholder="Marca" required />
           <input type="text" id="model" placeholder="Modelo" required />
           <input type="number" id="year" placeholder="Ano" required />
-          <input type="number" id="price" placeholder="Preço" required />
+          <input type="text" id="cor" placeholder="Cor" required />
+          <input type="number" id="price" placeholder="Preço" step="0.01" required />
           <button type="submit">Adicionar</button>
         </form>
       </div>

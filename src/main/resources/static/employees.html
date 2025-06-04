@@ -12,15 +12,14 @@
     <div class="container">
       <h1>Gerenciar Funcionários</h1>
       <div class="form-section">
-        <h2>Adicionar Funcionário</h2>
-        <form id="employeeForm" class="flex-row">
+        <h2>Adicionar Funcionário</h2>        <form id="employeeForm" class="flex-row">
           <input type="text" id="employeeName" placeholder="Nome" required />
-          <input
-            type="text"
-            id="employeePosition"
-            placeholder="Cargo"
-            required
-          />
+          <input type="text" id="employeeCpf" placeholder="CPF" required />
+          <input type="email" id="employeeEmail" placeholder="Email" required />
+          <input type="text" id="employeeEndereco" placeholder="Endereço" required />
+          <input type="text" id="employeeTelefone" placeholder="Telefone" required />
+          <input type="text" id="employeePosition" placeholder="Cargo" required />
+          <input type="number" id="employeeSalario" placeholder="Salário" step="0.01" required />
           <button type="submit">Adicionar</button>
         </form>
       </div>

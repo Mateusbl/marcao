@@ -12,25 +12,20 @@
     <div class="container">
       <h1>Gerenciar Serviços</h1>
       <div class="form-section">
-        <h2>Adicionar Serviço</h2>
-        <form id="serviceForm" class="flex-row">
-          <input
-            type="text"
-            id="serviceDescription"
-            placeholder="Descrição"
-            required
-          />
-          <input type="number" id="serviceCost" placeholder="Custo" required />
+        <h2>Adicionar Serviço</h2>        <form id="serviceForm" class="flex-row">
+          <input type="text" id="serviceName" placeholder="Nome do Serviço" required />
+          <input type="text" id="serviceDescription" placeholder="Descrição" required />
+          <input type="number" id="serviceCost" placeholder="Custo Base" step="0.01" required />
           <button type="submit">Adicionar</button>
         </form>
       </div>
       <h2>Serviços</h2>
       <table id="servicesTable">
         <thead>
-          <tr>
-            <th>ID</th>
+          <tr>            <th>ID</th>
+            <th>Nome do Serviço</th>
             <th>Descrição</th>
-            <th>Custo</th>
+            <th>Custo Base</th>
             <th>Ações</th>
           </tr>
         </thead>

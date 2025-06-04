@@ -3,14 +3,13 @@ async function fetchEmployees() {
     const res = await fetch('/api/employees');
     const employees = await res.json();
     const tbody = document.querySelector('#employeesTable tbody');
-    tbody.innerHTML = '';
-    employees.forEach(employee => {
+    tbody.innerHTML = '';    employees.forEach(employee => {
         const tr = document.createElement('tr');
         tr.innerHTML = `
-            <td>${employee.id}</td>
-            <td>${employee.name}</td>
-            <td>${employee.position}</td>
-            <td><button onclick="deleteEmployee('${employee.id}')">Remover</button></td>
+            <td>${employee.idFuncionario}</td>
+            <td>${employee.nome}</td>
+            <td>${employee.cargo}</td>
+            <td><button onclick="deleteEmployee('${employee.idFuncionario}')">Remover</button></td>
         `;
         tbody.appendChild(tr);
     });
@@ -23,14 +22,26 @@ async function deleteEmployee(id) {
 
 document.getElementById('employeeForm').onsubmit = async function(e) {
     e.preventDefault();
-    const name = document.getElementById('employeeName').value;
-    const position = document.getElementById('employeePosition').value;
+    const nome = document.getElementById('employeeName').value;
+    const cargo = document.getElementById('employeePosition').value;
+    const cpf = document.getElementById('employeeCpf').value;
+    const endereco = document.getElementById('employeeEndereco').value;
+    const telefone = document.getElementById('employeeTelefone').value;
+    const email = document.getElementById('employeeEmail').value;
+    const salario = document.getElementById('employeeSalario').value;
     await fetch('/api/employees', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-            id: Math.random().toString(36).substring(2, 10),
-            name, position
+            idFuncionario: Math.floor(Math.random() * 1000),
+            cpf,
+            nome,
+            endereco,
+            telefone,
+            email,
+            cargo,
+            salario: parseFloat(salario),
+            dataContratacao: new Date().toISOString()
         })
     });
     this.reset();
