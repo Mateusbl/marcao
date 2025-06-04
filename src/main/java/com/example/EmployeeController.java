@@ -11,17 +11,17 @@ public class EmployeeController {
     private EmployeeService employeeService;
 
     @GetMapping
-    public List<Employee> getAllEmployees() {
+    public List<Funcionario> getAllEmployees() {
         return employeeService.getAllEmployees();
     }
 
     @PostMapping
-    public Employee addEmployee(@RequestBody Employee employee) {
+    public Funcionario addEmployee(@RequestBody Funcionario employee) {
         return employeeService.addEmployee(employee);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteEmployee(@PathVariable String id) {
+    public void deleteEmployee(@PathVariable Integer id) {
         employeeService.deleteEmployee(id);
     }
 }

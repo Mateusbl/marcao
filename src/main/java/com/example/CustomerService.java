@@ -6,18 +6,18 @@ import java.util.List;
 
 @Service
 public class CustomerService {
-    private List<Customer> customers = new ArrayList<>();
+    private List<Cliente> customers = new ArrayList<>();
 
-    public List<Customer> getAllCustomers() {
+    public List<Cliente> getAllCustomers() {
         return customers;
     }
 
-    public Customer addCustomer(Customer customer) {
+    public Cliente addCustomer(Cliente customer) {
         customers.add(customer);
         return customer;
     }
 
-    public void deleteCustomer(String id) {
-        customers.removeIf(customer -> customer.getId().equals(id));
+    public void deleteCustomer(Integer idCliente) {
+        customers.removeIf(customer -> customer.getIdCliente().equals(idCliente));
     }
 }

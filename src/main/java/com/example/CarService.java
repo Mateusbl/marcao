@@ -7,18 +7,18 @@ import java.util.List;
 @Service
 public class CarService {
 
-    private List<Car> cars = new ArrayList<>();
+    private List<Carro> cars = new ArrayList<>();
 
-    public List<Car> getAllCars() {
+    public List<Carro> getAllCars() {
         return cars;
     }
 
-    public Car addCar(Car car) {
+    public Carro addCar(Carro car) {
         cars.add(car);
         return car;
     }
 
-    public void deleteCar(String id) {
-        cars.removeIf(car -> car.getId().equals(id));
+    public void deleteCar(Integer idCarro) {
+        cars.removeIf(car -> car.getIdCarro().equals(idCarro));
     }
 }

@@ -7,22 +7,21 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/cars")
 public class CarController {
-
     @Autowired
     private CarService carService;
 
     @GetMapping
-    public List<Car> getAllCars() {
+    public List<Carro> getAllCars() {
         return carService.getAllCars();
     }
 
     @PostMapping
-    public Car addCar(@RequestBody Car car) {
+    public Carro addCar(@RequestBody Carro car) {
         return carService.addCar(car);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteCar(@PathVariable String id) {
+    public void deleteCar(@PathVariable Integer id) {
         carService.deleteCar(id);
     }
 }

@@ -11,17 +11,17 @@ public class CustomerController {
     private CustomerService customerService;
 
     @GetMapping
-    public List<Customer> getAllCustomers() {
+    public List<Cliente> getAllCustomers() {
         return customerService.getAllCustomers();
     }
 
     @PostMapping
-    public Customer addCustomer(@RequestBody Customer customer) {
+    public Cliente addCustomer(@RequestBody Cliente customer) {
         return customerService.addCustomer(customer);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteCustomer(@PathVariable String id) {
+    public void deleteCustomer(@PathVariable Integer id) {
         customerService.deleteCustomer(id);
     }
 }
