@@ -1,16 +1,38 @@
 package com.example;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "carro")
 public class Carro {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_carro")
+    private Long id;
+    
     private Integer idCarro;
+    
+    @Column(unique = true)
     private String placa;
+    
+    @Column(nullable = false)
     private String marca;
+    
+    @Column(nullable = false)
     private String modelo;
+    
+    @Column(nullable = false)
     private Integer ano;
+    
     private String cor;
+    
+    @Column(name = "preco_venda", nullable = false)
     private double precoVenda;
+    
+    @Column(nullable = false)
     private String status;
 
-    // Default constructor for JSON deserialization
+    // Default constructor for JPA
     public Carro() {}
 
     public Carro(Integer idCarro, String placa, String marca, String modelo, Integer ano, String cor, double precoVenda, String status) {
@@ -25,6 +47,7 @@ public class Carro {
     }
 
     // Getters
+    public Long getId() { return id; }
     public Integer getIdCarro() { return idCarro; }
     public String getPlaca() { return placa; }
     public String getMarca() { return marca; }
@@ -35,6 +58,7 @@ public class Carro {
     public String getStatus() { return status; }
 
     // Setters for JSON deserialization
+    public void setId(Long id) { this.id = id; }
     public void setIdCarro(Integer idCarro) { this.idCarro = idCarro; }
     public void setPlaca(String placa) { this.placa = placa; }
     public void setMarca(String marca) { this.marca = marca; }

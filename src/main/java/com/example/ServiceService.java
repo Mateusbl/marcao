@@ -1,23 +1,23 @@
 package com.example;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class ServiceService {
-    private List<Servico> services = new ArrayList<>();
+    @Autowired
+    private ServicoRepository servicoRepository;
 
     public List<Servico> getAllServices() {
-        return services;
+        return servicoRepository.findAll();
     }
 
     public Servico addService(Servico service) {
-        services.add(service);
-        return service;
+        return servicoRepository.save(service);
     }
 
-    public void deleteService(Integer idServico) {
-        services.removeIf(service -> service.getIdServico().equals(idServico));
+    public void deleteService(Long id) {
+        servicoRepository.deleteById(id);
     }
 }

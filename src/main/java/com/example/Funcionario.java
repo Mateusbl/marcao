@@ -1,14 +1,25 @@
 package com.example;
 
+import jakarta.persistence.*;
 import java.util.Date;
 
+@Entity
+@Table(name = "funcionario")
 public class Funcionario extends Pessoa {
+    @Column(name = "id_funcionario")
     private Integer idFuncionario;
+    
+    @Column(nullable = false)
     private String cargo;
+    
+    @Column(nullable = false)
     private double salario;
+    
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "data_contratacao")
     private Date dataContratacao;
 
-    // Default constructor for JSON deserialization
+    // Default constructor for JPA
     public Funcionario() {
         super();
     }
@@ -34,13 +45,13 @@ public class Funcionario extends Pessoa {
     public void setDataContratacao(Date dataContratacao) { this.dataContratacao = dataContratacao; }
 
     public void registrarVenda(Venda venda) {
-        // Exemplo: adicionar venda a uma lista de vendas do funcionário
-        // vendas.add(venda);
+        // Implementar lógica de registro de venda
     }
+    
     public void executarServico(Servico servico) {
-        // Exemplo: adicionar serviço a uma lista de serviços executados
-        // servicosExecutados.add(servico);
+        // Implementar lógica de execução de serviço
     }
+    
     @Override
     public String exibirResumo() {
         return super.exibirResumo() + " - Cargo: " + cargo + ", Salário: R$ " + salario;

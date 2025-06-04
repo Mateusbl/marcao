@@ -18,10 +18,8 @@ public class EmployeeController {
     @PostMapping
     public Funcionario addEmployee(@RequestBody Funcionario employee) {
         return employeeService.addEmployee(employee);
-    }
-
-    @DeleteMapping("/{id}")
-    public void deleteEmployee(@PathVariable Integer id) {
+    }    @DeleteMapping("/{id}")
+    public void deleteEmployee(@PathVariable Long id) {
         employeeService.deleteEmployee(id);
     }
 }

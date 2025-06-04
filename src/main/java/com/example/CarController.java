@@ -18,10 +18,8 @@ public class CarController {
     @PostMapping
     public Carro addCar(@RequestBody Carro car) {
         return carService.addCar(car);
-    }
-
-    @DeleteMapping("/{id}")
-    public void deleteCar(@PathVariable Integer id) {
+    }    @DeleteMapping("/{id}")
+    public void deleteCar(@PathVariable Long id) {
         carService.deleteCar(id);
     }
 }

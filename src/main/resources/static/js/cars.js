@@ -6,12 +6,12 @@ async function fetchCars() {
     tbody.innerHTML = '';    cars.forEach(car => {
         const tr = document.createElement('tr');
         tr.innerHTML = `
-            <td>${car.idCarro}</td>
+            <td>${car.id}</td>
             <td>${car.marca}</td>
             <td>${car.modelo}</td>
             <td>${car.ano}</td>
             <td>${car.precoVenda}</td>
-            <td><button onclick="deleteCar('${car.idCarro}')">Remover</button></td>
+            <td><button onclick="deleteCar('${car.id}')">Remover</button></td>
         `;
         tbody.appendChild(tr);
     });

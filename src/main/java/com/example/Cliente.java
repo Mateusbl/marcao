@@ -1,12 +1,19 @@
 package com.example;
 
+import jakarta.persistence.*;
 import java.util.Date;
 
+@Entity
+@Table(name = "cliente")
 public class Cliente extends Pessoa {
+    @Column(name = "id_cliente")
     private Integer idCliente;
+    
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "data_registro")
     private Date dataRegistro;
 
-    // Default constructor for JSON deserialization
+    // Default constructor for JPA
     public Cliente() {
         super();
     }

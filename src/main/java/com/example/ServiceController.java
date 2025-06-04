@@ -18,10 +18,8 @@ public class ServiceController {
     @PostMapping
     public Servico addService(@RequestBody Servico service) {
         return serviceService.addService(service);
-    }
-
-    @DeleteMapping("/{id}")
-    public void deleteService(@PathVariable Integer id) {
+    }    @DeleteMapping("/{id}")
+    public void deleteService(@PathVariable Long id) {
         serviceService.deleteService(id);
     }
 }

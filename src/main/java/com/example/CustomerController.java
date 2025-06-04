@@ -18,10 +18,8 @@ public class CustomerController {
     @PostMapping
     public Cliente addCustomer(@RequestBody Cliente customer) {
         return customerService.addCustomer(customer);
-    }
-
-    @DeleteMapping("/{id}")
-    public void deleteCustomer(@PathVariable Integer id) {
+    }    @DeleteMapping("/{id}")
+    public void deleteCustomer(@PathVariable Long id) {
         customerService.deleteCustomer(id);
     }
 }

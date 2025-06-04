@@ -6,18 +6,15 @@ document.addEventListener('DOMContentLoaded', function() {
         const email = document.getElementById('customerEmail').value;
         const cpf = document.getElementById('customerCpf').value;
         const endereco = document.getElementById('customerEndereco').value;
-        const telefone = document.getElementById('customerTelefone').value;
-        await fetch('/api/customers', {
+        const telefone = document.getElementById('customerTelefone').value;        await fetch('/api/customers', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                idCliente: Math.floor(Math.random() * 1000),
                 cpf,
                 nome,
                 endereco,
                 telefone,
-                email,
-                dataRegistro: new Date().toISOString()
+                email
             })
         });
         this.reset();
@@ -32,10 +29,10 @@ async function fetchCustomers() {
     tbody.innerHTML = '';    customers.forEach(customer => {
         const tr = document.createElement('tr');
         tr.innerHTML = `
-            <td>${customer.idCliente}</td>
+            <td>${customer.id}</td>
             <td>${customer.nome}</td>
             <td>${customer.email}</td>
-            <td><button onclick="deleteCustomer('${customer.idCliente}')">Remover</button></td>
+            <td><button onclick="deleteCustomer('${customer.id}')">Remover</button></td>
         `;
         tbody.appendChild(tr);
     });

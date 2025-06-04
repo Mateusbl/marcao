@@ -1,13 +1,26 @@
 package com.example;
 
+import jakarta.persistence.*;
+
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "pessoa")
 public abstract class Pessoa {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    @Column(unique = true, nullable = false)
     private String cpf;
+    
+    @Column(nullable = false)
     private String nome;
+    
     private String endereco;
     private String telefone;
     private String email;
 
-    // Default constructor for JSON deserialization
+    // Default constructor for JPA
     public Pessoa() {}
 
     public Pessoa(String cpf, String nome, String endereco, String telefone, String email) {
@@ -19,6 +32,7 @@ public abstract class Pessoa {
     }
 
     // Getters
+    public Long getId() { return id; }
     public String getCpf() { return cpf; }
     public String getNome() { return nome; }
     public String getEndereco() { return endereco; }
@@ -26,6 +40,7 @@ public abstract class Pessoa {
     public String getEmail() { return email; }
 
     // Setters for JSON deserialization
+    public void setId(Long id) { this.id = id; }
     public void setCpf(String cpf) { this.cpf = cpf; }
     public void setNome(String nome) { this.nome = nome; }
     public void setEndereco(String endereco) { this.endereco = endereco; }
