@@ -1,25 +1,25 @@
 package com.example;
 
-public class Service {
-    private String id;
-    private String description;
-    private double cost;
+public class Servico {
+    private Integer idServico;
+    private String nomeServico;
+    private String descricao;
+    private double custoBase;
 
-    public Service(String id, String description, double cost) {
-        this.id = id;
-        this.description = description;
-        this.cost = cost;
+    public Servico(Integer idServico, String nomeServico, String descricao, double custoBase) {
+        this.idServico = idServico;
+        this.nomeServico = nomeServico;
+        this.descricao = descricao;
+        this.custoBase = custoBase;
     }
 
-    public String getId() {
-        return id;
-    }
+    public Integer getIdServico() { return idServico; }
+    public String getNomeServico() { return nomeServico; }
+    public String getDescricao() { return descricao; }
+    public double getCustoBase() { return custoBase; }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public double getCost() {
-        return cost;
+    public double calcularCustoFinal() {
+        // Implementar lógica de cálculo do custo final
+        return custoBase;
     }
 }

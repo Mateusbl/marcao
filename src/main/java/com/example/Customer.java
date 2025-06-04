@@ -1,25 +1,26 @@
 package com.example;
 
-public class Customer {
-    private String id;
-    private String name;
-    private String email;
+import java.util.Date;
 
-    public Customer(String id, String name, String email) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
+public class Cliente extends Pessoa {
+    private Integer idCliente;
+    private Date dataRegistro;
+
+    public Cliente(Integer idCliente, String cpf, String nome, String endereco, String telefone, String email, Date dataRegistro) {
+        super(cpf, nome, endereco, telefone, email);
+        this.idCliente = idCliente;
+        this.dataRegistro = dataRegistro;
     }
 
-    public String getId() {
-        return id;
+    public Integer getIdCliente() { return idCliente; }
+    public Date getDataRegistro() { return dataRegistro; }
+
+    public void solicitarServico() {
+        // Implementar lógica de solicitação de serviço
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getEmail() {
-        return email;
+    @Override
+    public String exibirResumo() {
+        return super.exibirResumo() + " - Cliente desde: " + dataRegistro;
     }
 }

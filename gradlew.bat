@@ -43,7 +43,7 @@ if "%DIRNAME%"=="" set DIRNAME=.
 set APP_BASE_NAME=%~n0
 set APP_HOME=%DIRNAME%
 
-set JAVA_HOME=E:\Java\Java21
+rem Removed hardcoded JAVA_HOME to use system JAVA_HOME
 
 for %%i in ("%APP_HOME%") do set APP_HOME=%%~fi
 if defined JAVA_HOME goto findJavaFromJavaHome
