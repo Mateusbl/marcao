@@ -22,53 +22,17 @@
         </form>
       </div>
       <h2>Clientes</h2>
-      <table id="customersTable">
-        <thead>
+      <table id="customersTable">        <thead>
           <tr>
             <th>ID</th>
             <th>Nome</th>
-            <th>Email</th>
+            <th>CPF</th>
+            <th>Telefone</th>
             <th>Ações</th>
           </tr>
         </thead>
         <tbody></tbody>
-      </table>
-    </div>
-    <script src="js/customers.js"></script>
-    <script>
-      let customers = [];
-      function renderCustomers() {
-        const tbody = document.querySelector("#customersTable tbody");
-        tbody.innerHTML = "";
-        customers.forEach((customer) => {
-          const tr = document.createElement("tr");
-          tr.innerHTML = `
-                    <td>${customer.id}</td>
-                    <td>${customer.name}</td>
-                    <td>${customer.email}</td>
-                    <td><button onclick="deleteCustomer('${customer.id}')">Remover</button></td>
-                `;
-          tbody.appendChild(tr);
-        });
-      }
-      document.getElementById("customerForm").onsubmit = function (e) {
-        e.preventDefault();
-        const name = document.getElementById("customerName").value;
-        const email = document.getElementById("customerEmail").value;
-        customers.push({
-          id: Math.random().toString(36).substring(2, 10),
-          name,
-          email,
-        });
-        this.reset();
-        renderCustomers();
-      };
-      function deleteCustomer(id) {
-        customers = customers.filter((c) => c.id !== id);
-        renderCustomers();
-      }
-      renderCustomers();
-    </script>
+      </table>    </div>
     <script src="js/hud.js"></script>
     <script src="js/customers.js"></script>
   </body>

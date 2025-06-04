@@ -4,12 +4,11 @@ async function fetchEmployees() {
     const employees = await res.json();
     const tbody = document.querySelector('#employeesTable tbody');
     tbody.innerHTML = '';    employees.forEach(employee => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-            <td>${employee.idFuncionario}</td>
+        const tr = document.createElement('tr');        tr.innerHTML = `
+            <td>${employee.id}</td>
             <td>${employee.nome}</td>
             <td>${employee.cargo}</td>
-            <td><button onclick="deleteEmployee('${employee.idFuncionario}')">Remover</button></td>
+            <td><button onclick="deleteEmployee('${employee.id}')">Remover</button></td>
         `;
         tbody.appendChild(tr);
     });

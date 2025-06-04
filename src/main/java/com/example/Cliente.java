@@ -6,9 +6,6 @@ import java.util.Date;
 @Entity
 @Table(name = "cliente")
 public class Cliente extends Pessoa {
-    @Column(name = "id_cliente")
-    private Integer idCliente;
-    
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "data_registro")
     private Date dataRegistro;
@@ -16,20 +13,15 @@ public class Cliente extends Pessoa {
     // Default constructor for JPA
     public Cliente() {
         super();
-    }
-
-    public Cliente(Integer idCliente, String cpf, String nome, String endereco, String telefone, String email, Date dataRegistro) {
+    }    public Cliente(String cpf, String nome, String endereco, String telefone, String email, Date dataRegistro) {
         super(cpf, nome, endereco, telefone, email);
-        this.idCliente = idCliente;
         this.dataRegistro = dataRegistro;
     }
 
-    // Getters
-    public Integer getIdCliente() { return idCliente; }
+    // Getters  
     public Date getDataRegistro() { return dataRegistro; }
 
     // Setters for JSON deserialization
-    public void setIdCliente(Integer idCliente) { this.idCliente = idCliente; }
     public void setDataRegistro(Date dataRegistro) { this.dataRegistro = dataRegistro; }
 
     public void solicitarServico() {

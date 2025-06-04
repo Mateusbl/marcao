@@ -4,8 +4,7 @@ async function fetchServices() {
     const services = await res.json();
     const tbody = document.querySelector('#servicesTable tbody');
     tbody.innerHTML = '';    services.forEach(service => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
+        const tr = document.createElement('tr');        tr.innerHTML = `
             <td>${service.idServico}</td>
             <td>${service.nomeServico}</td>
             <td>${service.descricao}</td>
