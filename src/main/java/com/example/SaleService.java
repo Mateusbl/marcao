@@ -6,18 +6,18 @@ import java.util.List;
 
 @Service
 public class SaleService {
-    private List<Sale> sales = new ArrayList<>();
+    private List<Venda> sales = new ArrayList<>();
 
-    public List<Sale> getAllSales() {
+    public List<Venda> getAllSales() {
         return sales;
     }
 
-    public Sale addSale(Sale sale) {
+    public Venda addSale(Venda sale) {
         sales.add(sale);
         return sale;
     }
 
-    public void deleteSale(String id) {
-        sales.removeIf(sale -> sale.getId().equals(id));
+    public void deleteSale(Integer idVenda) {
+        sales.removeIf(sale -> sale.getIdVenda().equals(idVenda));
     }
 }

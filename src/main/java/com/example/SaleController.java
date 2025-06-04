@@ -11,17 +11,17 @@ public class SaleController {
     private SaleService saleService;
 
     @GetMapping
-    public List<Sale> getAllSales() {
+    public List<Venda> getAllSales() {
         return saleService.getAllSales();
     }
 
     @PostMapping
-    public Sale addSale(@RequestBody Sale sale) {
+    public Venda addSale(@RequestBody Venda sale) {
         return saleService.addSale(sale);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteSale(@PathVariable String id) {
+    public void deleteSale(@PathVariable Integer id) {
         saleService.deleteSale(id);
     }
 }

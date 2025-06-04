@@ -11,17 +11,17 @@ public class ServiceController {
     private ServiceService serviceService;
 
     @GetMapping
-    public List<Service> getAllServices() {
+    public List<Servico> getAllServices() {
         return serviceService.getAllServices();
     }
 
     @PostMapping
-    public Service addService(@RequestBody Service service) {
+    public Servico addService(@RequestBody Servico service) {
         return serviceService.addService(service);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteService(@PathVariable String id) {
+    public void deleteService(@PathVariable Integer id) {
         serviceService.deleteService(id);
     }
 }
