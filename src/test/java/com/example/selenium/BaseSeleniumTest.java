@@ -19,7 +19,7 @@ import java.time.Duration;
  * Provides WebDriver setup and common utilities for UI testing
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@ActiveProfiles("test")
+@ActiveProfiles("selenium")
 public abstract class BaseSeleniumTest {
 
     protected WebDriver driver;
