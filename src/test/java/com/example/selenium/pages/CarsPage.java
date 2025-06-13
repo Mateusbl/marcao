@@ -158,6 +158,30 @@ public class CarsPage {
     }
 
     /**
+     * Get car data by make and model
+     */
+    public CarData getCarDataByMakeModel(String marca, String modelo) {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#carsTable tbody")));
+        
+        for (WebElement row : carRows) {
+            List<WebElement> cells = row.findElements(By.tagName("td"));
+            if (cells.size() >= 3 && 
+                cells.get(1).getText().equals(marca) && 
+                cells.get(2).getText().equals(modelo)) {
+                
+                return new CarData(
+                    cells.get(0).getText(), // ID
+                    cells.get(1).getText(), // Marca
+                    cells.get(2).getText(), // Modelo
+                    cells.get(3).getText(), // Ano
+                    cells.get(4).getText()  // Preço
+                );
+            }
+        }
+        return null;
+    }
+
+    /**
      * Wait for the page to load completely
      */
     public void waitForPageLoad() {

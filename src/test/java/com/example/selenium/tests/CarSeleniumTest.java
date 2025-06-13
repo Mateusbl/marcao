@@ -150,18 +150,15 @@ class CarSeleniumTest extends BaseSeleniumTest {
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
-        
-        // Then - verify car data is displayed correctly
+          // Then - verify car data is displayed correctly
         assertTrue(carsPage.carExists(marca, modelo), "Car should exist in table");
         
-        // Get the first car data (assuming it's the one we just added)
-        if (carsPage.getCarCount() > 0) {
-            CarsPage.CarData carData = carsPage.getCarData(0);
-            assertNotNull(carData, "Car data should not be null");
-            assertEquals(marca, carData.marca, "Car make should match");
-            assertEquals(modelo, carData.modelo, "Car model should match");
-            assertEquals(ano, carData.ano, "Car year should match");
-        }
+        // Get the specific car data we just added
+        CarsPage.CarData carData = carsPage.getCarDataByMakeModel(marca, modelo);
+        assertNotNull(carData, "Car data should not be null");
+        assertEquals(marca, carData.marca, "Car make should match");
+        assertEquals(modelo, carData.modelo, "Car model should match");
+        assertEquals(ano, carData.ano, "Car year should match");
     }    @Test
     @DisplayName("Should handle different car years")
     void shouldHandleDifferentCarYears() {
