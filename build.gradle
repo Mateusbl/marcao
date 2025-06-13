@@ -18,10 +18,11 @@ repositories {
 }
 
 dependencies {
-        implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'com.h2database:h2'    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'com.h2database:h2'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.seleniumhq.selenium:selenium-java:4.15.0'
     testImplementation 'org.seleniumhq.selenium:selenium-edge-driver:4.15.0'
     testImplementation 'org.seleniumhq.selenium:selenium-chrome-driver:4.15.0'
@@ -64,9 +65,7 @@ task seleniumTest(type: Test) {
     description = 'Runs Selenium UI tests'
     group = 'verification'
     
-    useJUnitPlatform {
-        includeTags 'selenium'
-    }
+    useJUnitPlatform()
     
     // Use selenium profile
     systemProperty 'spring.profiles.active', 'selenium'

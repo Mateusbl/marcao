@@ -1,7 +1,7 @@
 # Selenium Testing Guide
 
 ## Overview
-This project includes comprehensive Selenium UI tests for testing the web interface of the car dealership management system.
+This project includes comprehensive Selenium UI tests for testing the web interface of the car dealership management system using Microsoft Edge browser.
 
 ## Test Structure
 
@@ -32,7 +32,7 @@ This project includes comprehensive Selenium UI tests for testing the web interf
 
 ### Prerequisites
 - Java 21
-- Chrome browser (for Selenium WebDriver)
+- Microsoft Edge browser (standard on Windows 10/11)
 - All dependencies installed via Gradle
 
 ### Test Commands
@@ -61,14 +61,14 @@ This project includes comprehensive Selenium UI tests for testing the web interf
 #### Selenium Tests
 - Use separate H2 database: `jdbc:h2:mem:selenium-testdb`
 - Profile: `selenium`
-- Headless Chrome browser
+- Headless Microsoft Edge browser
 - Sequential execution to avoid conflicts
 - Higher memory allocation (1-2GB)
 
 ## Test Features
 
 ### WebDriver Management
-- **Automatic Setup**: WebDriverManager handles Chrome driver installation
+- **Automatic Setup**: WebDriverManager handles Edge driver installation
 - **Headless Mode**: Tests run without opening browser windows
 - **Cross-Platform**: Works on Windows, Linux, and macOS
 - **Cleanup**: Automatic WebDriver cleanup after each test

@@ -116,9 +116,7 @@ public class CustomersPage {
                 break;
             }
         }
-    }
-
-    /**
+    }    /**
      * Get customer data from a specific row
      */
     public CustomerData getCustomerData(int rowIndex) {
@@ -131,12 +129,14 @@ public class CustomersPage {
         WebElement row = customerRows.get(rowIndex);
         List<WebElement> cells = row.findElements(By.tagName("td"));
         
-        if (cells.size() >= 4) {
+        // Based on the actual JavaScript implementation:
+        // columns are: ID, Nome, Email, Delete Button
+        if (cells.size() >= 3) {
             return new CustomerData(
                 cells.get(0).getText(), // ID
                 cells.get(1).getText(), // Nome
-                cells.get(2).getText(), // CPF
-                cells.get(3).getText()  // Telefone
+                cells.get(2).getText(), // Email (not CPF!)
+                ""                      // Telefone not displayed
             );
         }
         
@@ -160,21 +160,19 @@ public class CustomersPage {
         emailInput.clear();
         enderecoInput.clear();
         telefoneInput.clear();
-    }
-
-    /**
+    }    /**
      * Data class to hold customer information
      */
     public static class CustomerData {
         public final String id;
         public final String nome;
-        public final String cpf;
+        public final String email;  // Changed from cpf to email
         public final String telefone;
 
-        public CustomerData(String id, String nome, String cpf, String telefone) {
+        public CustomerData(String id, String nome, String email, String telefone) {
             this.id = id;
             this.nome = nome;
-            this.cpf = cpf;
+            this.email = email;  // Changed from cpf to email
             this.telefone = telefone;
         }
     }
