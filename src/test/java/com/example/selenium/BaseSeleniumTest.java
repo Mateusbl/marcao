@@ -5,8 +5,8 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
@@ -16,7 +16,7 @@ import java.time.Duration;
 
 /**
  * Base class for Selenium integration tests
- * Provides WebDriver setup and common utilities for UI testing
+ * Provides WebDriver setup and common utilities for UI testing using Microsoft Edge
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @ActiveProfiles("selenium")
@@ -32,22 +32,24 @@ public abstract class BaseSeleniumTest {
 
     @BeforeAll
     static void setupClass() {
-        // Setup ChromeDriver automatically
-        WebDriverManager.chromedriver().setup();
+        // Setup Edge driver automatically
+        WebDriverManager.edgedriver().setup();
     }
 
     @BeforeEach
     void setUp() {
-        // Configure Chrome options for headless testing
-        ChromeOptions options = new ChromeOptions();
+        // Configure Edge options for headless testing
+        EdgeOptions options = new EdgeOptions();
         options.addArguments("--headless"); // Run in headless mode for CI/CD
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--disable-gpu");
         options.addArguments("--window-size=1920,1080");
+        options.addArguments("--disable-web-security");
+        options.addArguments("--allow-running-insecure-content");
         
         // Create WebDriver instance
-        driver = new ChromeDriver(options);
+        driver = new EdgeDriver(options);
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         
         // Set base URL for the application
