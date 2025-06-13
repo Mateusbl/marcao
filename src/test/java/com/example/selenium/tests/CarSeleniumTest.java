@@ -172,14 +172,7 @@ class CarSeleniumTest extends BaseSeleniumTest {
             {"MID-9012", "Hyundai", "HB20", "2020", "Azul", "60000.00"}
         };
         
-        // Get initial count safely (may be 0 if no cars exist yet)
-        int initialCount;
-        try {
-            initialCount = carsPage.getCarCount();
-        } catch (Exception e) {
-            // If table body doesn't exist yet, assume 0 cars
-            initialCount = 0;
-        }
+        int initialCount = carsPage.getCarCount();
         
         // When - adding cars with different years
         for (String[] car : cars) {
