@@ -22,3 +22,4 @@ public class CarService {
         cars.removeIf(car -> car.getId().equals(id));
     }
 }
+// Esta classe já está preparada para uso de mock do CarroRepository via injeção de dependência.
