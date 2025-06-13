@@ -23,47 +23,23 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.seleniumhq.selenium:selenium-java:4.9.0'
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.3'
     testImplementation 'org.mockito:mockito-core:5.3.1'
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
     testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
     testImplementation 'org.mockito:mockito-core:5.2.0'
     testImplementation 'org.mockito:mockito-junit-jupiter:5.2.0'
     testImplementation 'org.springframework.boot:spring-boot-test-autoconfigure'
     testImplementation 'org.testcontainers:junit-jupiter:1.18.0'
->>>>>>> Stashed changes
 }
 
 test {
     useJUnitPlatform()
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-}
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 
-    // Run tests in parallel for better performance
+    // Executa testes em paralelo
     systemProperty 'junit.jupiter.execution.parallel.enabled', 'true'
     systemProperty 'junit.jupiter.execution.parallel.mode.default', 'concurrent'
 
-    // Test reporting
+    // Relatórios de teste
     testLogging {
         events "passed", "skipped", "failed"
         exceptionFormat "full"
@@ -72,10 +48,10 @@ test {
         showStackTraces true
     }
 
-    // Fail fast on first test failure
+    // Não falha no primeiro erro
     failFast = false
 
-    // Memory settings for tests
+    // Configurações de memória
     minHeapSize = "512m"
     maxHeapSize = "1024m"
 }
@@ -97,13 +73,3 @@ jacocoTestReport {
 check.dependsOn test
 
 bootRun.dependsOn test
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
