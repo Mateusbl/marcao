@@ -1,0 +1,119 @@
+plugins {
+    id 'org.springframework.boot' version '3.2.5'
+    id 'io.spring.dependency-management' version '1.1.4'
+    id 'java'
+}
+
+group = 'com.example'
+version = '1.0-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'com.h2database:h2'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.seleniumhq.selenium:selenium-java:4.15.0'
+    testImplementation 'org.seleniumhq.selenium:selenium-edge-driver:4.15.0'
+    testImplementation 'org.seleniumhq.selenium:selenium-chrome-driver:4.15.0'
+    testImplementation 'io.github.bonigarcia:webdrivermanager:5.6.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.9.3'
+    testImplementation 'org.mockito:mockito-core:5.3.1'
+    testImplementation 'org.springframework.boot:spring-boot-test-autoconfigure'
+    testImplementation 'org.testcontainers:junit-jupiter:1.18.0'
+}
+
+test {
+    useJUnitPlatform()
+    
+    // Exclude Selenium tests from regular test run
+    exclude '**/selenium/**/*Test.class'
+    
+    // Run tests in parallel for better performance
+    systemProperty 'junit.jupiter.execution.parallel.enabled', 'true'
+    systemProperty 'junit.jupiter.execution.parallel.mode.default', 'concurrent'
+    
+    // Test reporting
+    testLogging {
+        events "passed", "skipped", "failed"
+        exceptionFormat "full"
+        showCauses true
+        showExceptions true
+        showStackTraces true
+    }
+    
+    // Fail fast on first test failure
+    failFast = false
+    
+    // Memory settings for tests
+    minHeapSize = "512m"
+    maxHeapSize = "1024m"
+}
+
+// Task to run tests before build
+check.dependsOn test
+
+// Selenium Tests Task
+task seleniumTest(type: Test) {
+    description = 'Runs Selenium UI tests'
+    group = 'verification'
+    
+    useJUnitPlatform()
+    
+    // Use selenium profile
+    systemProperty 'spring.profiles.active', 'selenium'
+    
+    // Filter for Selenium tests
+    include '**/selenium/**/*Test.class'
+    
+    // Memory settings for Selenium tests (they need more memory)
+    minHeapSize = "1024m"
+    maxHeapSize = "2048m"
+    
+    // Test reporting for Selenium
+    testLogging {
+        events "passed", "skipped", "failed"
+        exceptionFormat "full"
+        showCauses true
+        showExceptions true
+        showStackTraces true
+        showStandardStreams = false
+    }
+    
+    // Don't fail fast for Selenium tests (they might be flaky)
+    failFast = false
+    
+    // Run Selenium tests sequentially to avoid resource conflicts
+    maxParallelForks = 1
+}
+
+// Task to run unit tests only (excluding Selenium)
+task unitTest(type: Test) {
+    description = 'Runs unit tests only (excludes Selenium UI tests)'
+    group = 'verification'
+    
+    useJUnitPlatform()
+    
+    // Exclude Selenium tests
+    exclude '**/selenium/**/*Test.class'
+    
+    // Use test profile
+    systemProperty 'spring.profiles.active', 'test'
+}
+
+// Task to run all tests including Selenium
+task allTests {
+    description = 'Runs all tests including Selenium UI tests'
+    group = 'verification'
+    dependsOn unitTest, seleniumTest
+}
