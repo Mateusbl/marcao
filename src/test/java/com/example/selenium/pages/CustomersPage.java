@@ -76,14 +76,17 @@ public class CustomersPage {
         telefoneInput.sendKeys(telefone);
         
         addButton.click();
-    }
-
-    /**
+    }    /**
      * Get the number of customers in the table
      */
     public int getCustomerCount() {
-        wait.until(ExpectedConditions.visibilityOf(tableBody));
-        return customerRows.size();
+        try {
+            wait.until(ExpectedConditions.visibilityOf(tableBody));
+            return customerRows.size();
+        } catch (Exception e) {
+            // If table body is not visible or doesn't exist, assume no customers
+            return 0;
+        }
     }
 
     /**

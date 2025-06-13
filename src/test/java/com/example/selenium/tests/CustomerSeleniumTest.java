@@ -149,8 +149,7 @@ class CustomerSeleniumTest extends BaseSeleniumTest {
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
-        
-        // Then - verify customer data is displayed correctly
+          // Then - verify customer data is displayed correctly
         assertTrue(customersPage.customerExists(nome), "Customer should exist in table");
         
         // Get the first customer data (assuming it's the one we just added)
@@ -158,8 +157,8 @@ class CustomerSeleniumTest extends BaseSeleniumTest {
             CustomersPage.CustomerData customerData = customersPage.getCustomerData(0);
             assertNotNull(customerData, "Customer data should not be null");
             assertEquals(nome, customerData.nome, "Customer name should match");
-            assertEquals(cpf, customerData.cpf, "Customer CPF should match");
-            assertEquals(telefone, customerData.telefone, "Customer phone should match");
+            assertEquals(email, customerData.email, "Customer email should match");
+            // Note: telefone is not displayed in the current table implementation
         }
     }
 

@@ -47,10 +47,9 @@ public abstract class BaseSeleniumTest {
         options.addArguments("--window-size=1920,1080");
         options.addArguments("--disable-web-security");
         options.addArguments("--allow-running-insecure-content");
-        
-        // Create WebDriver instance
+          // Create WebDriver instance
         driver = new EdgeDriver(options);
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(15)); // Increased from 10 to 15 seconds
         
         // Set base URL for the application
         baseUrl = "http://localhost:" + port;

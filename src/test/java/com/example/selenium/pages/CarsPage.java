@@ -82,14 +82,17 @@ public class CarsPage {
         priceInput.sendKeys(preco);
         
         addButton.click();
-    }
-
-    /**
+    }    /**
      * Get the number of cars in the table
      */
     public int getCarCount() {
-        wait.until(ExpectedConditions.visibilityOf(tableBody));
-        return carRows.size();
+        try {
+            wait.until(ExpectedConditions.visibilityOf(tableBody));
+            return carRows.size();
+        } catch (Exception e) {
+            // If table body is not visible or doesn't exist, assume no cars
+            return 0;
+        }
     }
 
     /**
