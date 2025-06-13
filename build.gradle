@@ -24,9 +24,12 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.seleniumhq.selenium:selenium-java:4.9.0'
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     testImplementation 'org.junit.jupiter:junit-jupiter:5.9.3'
     testImplementation 'org.mockito:mockito-core:5.3.1'
 =======
+=======
+>>>>>>> Stashed changes
     testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
     testImplementation 'org.mockito:mockito-core:5.2.0'
     testImplementation 'org.mockito:mockito-junit-jupiter:5.2.0'
@@ -38,8 +41,11 @@ dependencies {
 test {
     useJUnitPlatform()
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 }
 =======
+=======
+>>>>>>> Stashed changes
 
     // Run tests in parallel for better performance
     systemProperty 'junit.jupiter.execution.parallel.enabled', 'true'
@@ -79,4 +85,7 @@ jacocoTestReport {
 check.dependsOn test
 
 bootRun.dependsOn test
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes

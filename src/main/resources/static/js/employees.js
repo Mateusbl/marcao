@@ -1,6 +1,7 @@
 // filepath: frontend/src/js/employees.js
 async function fetchEmployees() {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     const res = await fetch('/api/employees');
     const employees = await res.json();
     const tbody = document.querySelector('#employeesTable tbody');
@@ -13,6 +14,8 @@ async function fetchEmployees() {
             <td>${employee.position}</td>
             <td><button onclick="deleteEmployee('${employee.id}')">Remover</button></td>
 =======
+=======
+>>>>>>> Stashed changes
   const res = await fetch("/api/employees");
   const employees = await res.json();
   const tbody = document.querySelector("#employeesTable tbody");
@@ -43,6 +46,9 @@ async function fetchEmployees() {
             <td><button onclick="deleteEmployee('${
               employee.id
             }')">Remover</button></td>
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
         `;
     tbody.appendChild(tr);
@@ -54,6 +60,7 @@ async function deleteEmployee(id) {
   fetchEmployees();
 }
 
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 document.getElementById('employeeForm').onsubmit = async function(e) {
     e.preventDefault();
@@ -70,6 +77,8 @@ document.getElementById('employeeForm').onsubmit = async function(e) {
     this.reset();
     fetchEmployees();
 =======
+=======
+>>>>>>> Stashed changes
 document.getElementById("employeeForm").onsubmit = async function (e) {
   e.preventDefault();
   const nome = document.getElementById("employeeName").value;
@@ -95,6 +104,9 @@ document.getElementById("employeeForm").onsubmit = async function (e) {
   });
   this.reset();
   fetchEmployees();
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 };
 
